@@ -6,6 +6,9 @@ drafts from versioned business rate cards and requires human approval.
 
 This repository contains no API keys, Telegram tokens or customer data.
 
+See [WALKTHROUGH.md](WALKTHROUGH.md) for what the system does and the
+step-by-step guide to installing the server and onboarding each customer.
+
 ## Safety and privacy boundaries
 
 - Every database query is scoped through the Telegram user's active workspace.
@@ -106,17 +109,16 @@ disable prompt logging and input/output use as a second boundary.
 
 No provider key is needed for the unit tests:
 
-```powershell
-$env:PYTHONPATH = "infra/hermes-tradie-assistant/workspace/src"
-python -m unittest discover -s infra/hermes-tradie-assistant/workspace/tests -v
-python -m compileall -q infra/hermes-tradie-assistant/workspace/src infra/hermes-tradie-assistant/workspace/scripts infra/hermes-tradie-assistant/hooks
+```bash
+PYTHONPATH=workspace/src python3 -m unittest discover -s workspace/tests -v
+python3 -m compileall -q workspace/src workspace/scripts hooks
 ```
 
 With a privately supplied key and exact model, run the read-only provider
 preflight before deployment:
 
-```powershell
-python infra/hermes-tradie-assistant/workspace/scripts/provider_preflight.py --config infra/hermes-tradie-assistant/workspace/config/provider_guard.json
+```bash
+python3 workspace/scripts/provider_preflight.py --config workspace/config/provider_guard.json
 ```
 
 ## Contabo deployment gate

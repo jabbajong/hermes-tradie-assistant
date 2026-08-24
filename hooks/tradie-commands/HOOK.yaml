@@ -1,0 +1,7 @@
+name: tradie_assistant_commands
+description: Tenant-aware Tradie Assistant Telegram commands and session identity binding.
+events:
+  - session:start
+  - session:reset
+  - agent:start
+  - command:*

@@ -1,0 +1,12 @@
+{
+  "upstream_base_url": "https://openrouter.ai/api/v1",
+  "listen_host": "127.0.0.1",
+  "listen_port": 18082,
+  "requests_per_minute": 10,
+  "daily_provider_calls": 300,
+  "max_output_tokens_per_call": 4096,
+  "daily_reserved_output_tokens": 500000,
+  "max_request_bytes": 15000000,
+  "request_timeout_seconds": 180,
+  "require_image_input": true
+}

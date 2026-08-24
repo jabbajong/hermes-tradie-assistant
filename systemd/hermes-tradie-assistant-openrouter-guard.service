@@ -1,0 +1,29 @@
+[Unit]
+Description=Tradie Assistant fixed-upstream OpenRouter ZDR guard
+After=network-online.target
+Wants=network-online.target
+Before=hermes-gateway@tradie-assistant.service
+ConditionPathExists=/opt/hermes-agents/tradie-assistant/workspace/config/provider_guard.json
+
+[Service]
+Type=simple
+User=hermes-tradie-assistant
+Group=hermes-tradie-assistant
+EnvironmentFile=/etc/hermes/tradie-assistant-openrouter.env
+Environment=PYTHONPATH=/opt/hermes-agents/tradie-assistant/workspace/src
+WorkingDirectory=/opt/hermes-agents/tradie-assistant/workspace
+ExecStart=/usr/local/lib/hermes-agent/venv/bin/python /opt/hermes-agents/tradie-assistant/workspace/scripts/openrouter_guard.py --config /opt/hermes-agents/tradie-assistant/workspace/config/provider_guard.json --state /opt/hermes-agents/tradie-assistant/workspace/state/provider_budget.json
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/hermes-agents/tradie-assistant/workspace/state
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictSUIDSGID=yes
+LockPersonality=yes
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

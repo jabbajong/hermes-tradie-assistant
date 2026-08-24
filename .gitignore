@@ -1,0 +1,8 @@
+.env
+config.yaml
+workspace/inbox/
+workspace/state/
+**/__pycache__/
+*.py[cod]
+*.sqlite3*
+release-manifest.json

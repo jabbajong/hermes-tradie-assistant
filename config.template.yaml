@@ -1,0 +1,79 @@
+model:
+  provider: openrouter
+  default: __OPENROUTER_MODEL__
+provider_routing:
+  sort: latency
+  require_parameters: true
+  data_collection: "deny"
+agent:
+  verify_on_stop: false
+  reasoning_effort: medium
+  max_turns: 8
+terminal:
+  backend: local
+  cwd: /opt/hermes-agents/tradie-assistant
+  timeout: 60
+  home_mode: profile
+display:
+  show_reasoning: false
+  show_commentary: false
+  tool_progress: "off"
+  interim_assistant_messages: false
+  background_process_notifications: "off"
+  busy_input_mode: queue
+  busy_ack_enabled: false
+  platforms:
+    telegram:
+      tool_progress: "off"
+      interim_assistant_messages: false
+      streaming: false
+memory:
+  memory_enabled: false
+  user_profile_enabled: false
+skills:
+  external_dirs:
+    - /opt/hermes-agents/tradie-assistant/profile-skills
+timezone: Australia/Perth
+gateway:
+  message_timestamps:
+    enabled: true
+platform_toolsets:
+  telegram: []
+platforms:
+  telegram:
+    allow_from: []
+    allow_admin_from:
+      - '0'
+    user_allowed_commands:
+      - help
+      - setup
+      - new
+      - lead
+      - quote
+      - approve
+      - revise
+      - invite
+      - switch
+      - export
+      - delete
+    extra:
+      command_menu:
+        max_commands: 11
+        priority_mode: replace
+        priority:
+          - help
+          - setup
+          - new
+          - lead
+          - quote
+          - approve
+          - revise
+          - invite
+          - switch
+          - export
+          - delete
+plugins:
+  enabled:
+    - openrouter-provider
+  disabled: []
+_config_version: 33

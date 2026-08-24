@@ -1,0 +1,12 @@
+{
+  "labour_rate_cents_per_hour": 0,
+  "minimum_charge_cents": 0,
+  "callout_fee_cents": 0,
+  "travel_rate_cents_per_km": 0,
+  "included_travel_km": 0,
+  "materials_markup_percent": 0,
+  "after_hours_multiplier": 1.5,
+  "rounding_increment_cents": 100,
+  "prices_include_gst": false,
+  "configured": false
+}
